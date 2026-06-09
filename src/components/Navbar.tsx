@@ -6,7 +6,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
   const role = localStorage.getItem("role");
   const isAdmin = role === "admin";
 
