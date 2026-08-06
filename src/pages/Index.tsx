@@ -229,7 +229,7 @@ const Index = () => {
   useEffect(() => {
     if (getAboutSuccess) {
       const record = getAboutSuccess.data.find((d) => d.key === "aboutUs") ?? getAboutSuccess.data[0];
-      setQrCodes(record?.qr ?? []);
+      setQrCodes(record?.aboutUs?.qr ?? []);
       dispatch(cleargetAboutAction());
     }
   }, [getAboutSuccess, dispatch]);
@@ -300,6 +300,22 @@ const Index = () => {
           </div>
         )}
 
+        {/* Book Your Plot — blinking CTA */}
+        <PlotBookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} qrCodes={qrCodes} />
+        <div className="mb-10 flex justify-center">
+          <button
+            onClick={() => setBookingOpen(true)}
+            className="relative px-8 py-4 rounded-2xl text-white text-base font-bold shadow-lg overflow-hidden"
+            style={{ background: "linear-gradient(135deg, hsl(269,57%,46%), hsl(282,54%,62%))" }}
+          >
+            <span
+              className="absolute inset-0 rounded-2xl"
+              style={{ animation: "pulse-ring 1.6s ease-out infinite", background: "hsl(269,57%,46%)", opacity: 0 }}
+            />
+            🏡 Book Your Plot Now
+          </button>
+        </div>
+
         {/* Property Type Filters */}
         <div className="mb-10 space-y-4 animate-fade-in">
           <div>
@@ -362,22 +378,6 @@ const Index = () => {
               ))}
             </div>
           )}
-        </div>
-
-        {/* Book Your Plot — blinking CTA */}
-        <PlotBookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} qrCodes={qrCodes} />
-        <div className="mt-14 mb-4 flex justify-center">
-          <button
-            onClick={() => setBookingOpen(true)}
-            className="relative px-8 py-4 rounded-2xl text-white text-base font-bold shadow-lg overflow-hidden"
-            style={{ background: "linear-gradient(135deg, hsl(269,57%,46%), hsl(282,54%,62%))" }}
-          >
-            <span
-              className="absolute inset-0 rounded-2xl"
-              style={{ animation: "pulse-ring 1.6s ease-out infinite", background: "hsl(269,57%,46%)", opacity: 0 }}
-            />
-            🏡 Book Your Plot Now
-          </button>
         </div>
 
         {/* Modal form */}
