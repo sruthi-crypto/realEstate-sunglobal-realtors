@@ -13,10 +13,10 @@ import { PropertyData } from "@/types/responses";
 const PROPERTY_TYPES = ["All", "Open Plots", "Apartments", "Gated Villas", "Gated Communities"];
 
 const PLOT_OPTIONS = [
-  { sqft: "2 Cents", price: 3500 },
-  { sqft: "4 Cents", price: 4500 },
-  { sqft: "6 Cents", price: 5500 },
-  { sqft: "8 Cents", price: 6500 },
+  { sqft: "2 Cents", price: 4500 },
+  { sqft: "4 Cents", price: 5500 },
+  { sqft: "6 Cents", price: 6500 },
+  { sqft: "8 Cents", price: 7500 },
 ];
 
 // ── Plot Booking Modal ────────────────────────────────────────────────────────
@@ -65,9 +65,8 @@ function PlotBookingModal({
                 <button
                   key={i}
                   onClick={() => setSelected(i)}
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border-2 transition-all text-left ${
-                    selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40 hover:bg-muted/40"
-                  }`}
+                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl border-2 transition-all text-left ${selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40 hover:bg-muted/40"
+                    }`}
                 >
                   <span className="font-semibold text-foreground">{opt.sqft}</span>
                   <span className="font-bold text-primary">₹{opt.price.toLocaleString("en-IN")}</span>
@@ -106,9 +105,8 @@ function PlotBookingModal({
                       <button
                         key={i}
                         onClick={() => setSelectedQr(i)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
-                          selectedQr === i ? "bg-primary text-white border-primary" : "border-border text-muted-foreground hover:bg-muted"
-                        }`}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${selectedQr === i ? "bg-primary text-white border-primary" : "border-border text-muted-foreground hover:bg-muted"
+                          }`}
                       >
                         {q.label || `QR ${i + 1}`}
                       </button>
